@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Friendship 🤍</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:radial-gradient(circle at 20% 20%,#fff0f7,transparent 30%),radial-gradient(circle at 80% 80%,#ffd1e4,transparent 30%),linear-gradient(135deg,#ffb6d5,#ffdbea,#ffc4dd);display:flex;justify-content:center;align-items:center;overflow:hidden}
+#main{width:90%;max-width:500px;text-align:center;animation:appear 1s ease}
+#main h1{color:#a91458;font-size:32px;margin-bottom:35px;text-shadow:0 3px 10px rgba(160,30,90,.15)}
+.buttons{position:relative;height:120px}
+button{border:none;border-radius:30px;padding:15px 32px;font-size:17px;font-weight:bold;cursor:pointer;transition:transform .2s ease}
+#yes{background:#ff4f98;color:white;box-shadow:0 8px 20px rgba(200,40,100,.3);margin-right:15px}
+#yes:hover{transform:scale(1.08)}
+#no{background:white;color:#b51b61;position:absolute;left:55%;box-shadow:0 6px 18px rgba(150,40,90,.2)}
+#card{display:none;width:92%;max-width:470px;opacity:0;transform:scale(.5);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.17,.67,.3,1.3)}
+.license{position:relative;background:rgba(255,255,255,.91);padding:32px 28px;border-radius:30px;border:2px solid rgba(255,105,160,.35);box-shadow:0 20px 60px rgba(150,40,90,.25),inset 0 0 30px rgba(255,180,210,.25);backdrop-filter:blur(12px);text-align:center}
+.license:before{content:"✨";position:absolute;top:15px;left:20px;font-size:22px}
+.license:after{content:"✨";position:absolute;top:15px;right:20px;font-size:22px}
+.title{color:#bd155d;font-size:26px;margin-bottom:12px;letter-spacing:1px}
+.names{font-size:21px;font-weight:bold;color:#8e2453;margin-bottom:20px}
+.divider{height:2px;background:linear-gradient(90deg,transparent,#ff77ae,transparent);margin:15px 0 22px}
+.info{text-align:left;background:#fff4f8;border-radius:18px;padding:15px 18px;line-height:1.9;color:#633047;font-size:15px}
+.info span{font-weight:bold;color:#b51b61}
+.she{color:#b51b61;font-size:19px;font-weight:bold;margin-top:25px;margin-bottom:10px}
+.qualities{text-align:left;width:190px;margin:auto;line-height:2;color:#633047;font-size:16px}
+.qualities div{opacity:0;transform:translateX(-20px);animation:qualityIn .5s ease forwards}
+.qualities div:nth-child(1){animation-delay:.2s}
+.qualities div:nth-child(2){animation-delay:.4s}
+.qualities div:nth-child(3){animation-delay:.6s}
+.qualities div:nth-child(4){animation-delay:.8s}
+.qualities div:nth-child(5){animation-delay:1s}
+.qualities div:nth-child(6){animation-delay:1.2s}
+.message{margin-top:22px;padding:15px;background:#fff0f6;border-radius:18px;color:#633047;font-size:15px;line-height:1.6;font-style:italic;border:1px solid #ffd0e2}
+.bottom{margin-top:20px;font-size:20px;letter-spacing:4px}
+.particle{position:fixed;top:-50px;pointer-events:none;z-index:9999;animation:fall linear forwards}
+@keyframes fall{
+0%{transform:translateY(-50px) rotate(0deg) scale(.5);opacity:1}
+50%{opacity:1}
+100%{transform:translateY(110vh) rotate(720deg) scale(1.2);opacity:0}
+}
+@keyframes appear{
+from{opacity:0;transform:scale(.8)}
+to{opacity:1;transform:scale(1)}
+}
+@keyframes qualityIn{
+to{opacity:1;transform:translateX(0)}
+}
+@media(max-width:500px){
+#main h1{font-size:27px}
+.license{padding:28px 20px}
+.title{font-size:23px}
+.names{font-size:19px}
+.info{font-size:14px}
+}
+</style>
+</head>
+<body>
+<div id="main">
+<h1>Do you like my friendship? 🩷</h1>
+<div class="buttons">
+<button id="yes" onclick="accepted()">YES 🩷</button>
+<button id="no">NO 😭</button>
+</div>
+</div>
 
+<div id="card">
+<div class="license">
+<div class="title">🩷 FRIENDSHIP LICENSE 🩷</div>
+<div class="names">🌸 Manaswi × Varad 🤍</div>
+<div class="divider"></div>
+<div class="info">
+<div>🏷️ <span>Status:</span> Permanently Approved ♾️</div>
+<div>💯 <span>Friendship Level:</span> 100%</div>
+<div>🗓️ <span>Validity:</span> Forever ♾️</div>
+</div>
+<div class="she">🌷 She is... 🌷</div>
+<div class="qualities">
+<div>🌿 • Calm</div>
+<div>✨ • Charming</div>
+<div>🌸 • Beautiful</div>
+<div>🫶 • Kind</div>
+<div>💫 • Attractive</div>
+<div>🌼 • Genuine</div>
+</div>
+<div class="divider"></div>
+<div class="message">💬 “Honestly, having a friend like you is a pretty nice thing to have.” 🩷</div>
+<div class="bottom">🫶 ✨ 🩷 🤍 🌸 💫 🎀</div>
+</div>
+</div>
+
+<script>
+const noButton=document.getElementById("no");
+
+function moveNo(){
+const x=Math.random()*(window.innerWidth-noButton.offsetWidth-20);
+const y=Math.random()*(window.innerHeight-noButton.offsetHeight-20);
+noButton.style.position="fixed";
+noButton.style.left=Math.max(x,20)+"px";
+noButton.style.top=Math.max(y,20)+"px";
+}
+
+noButton.addEventListener("mouseenter",moveNo);
+noButton.addEventListener("touchstart",e=>{
+e.preventDefault();
+moveNo();
+});
+noButton.addEventListener("focus",moveNo);
+
+function accepted(){
+document.getElementById("main").style.display="none";
+const card=document.getElementById("card");
+card.style.display="block";
+
+setTimeout(()=>{
+card.style.opacity="1";
+card.style.transform="scale(1)";
+},100);
+
+emojiBlast();
+}
+
+function emojiBlast(){
+const emojis=[
+"🩷","🤍","💗","💕","✨","🌸",
+"🫶","🎀","💫","🌷","💖","⭐"
+];
+
+for(let i=0;i<100;i++){
+const particle=document.createElement("div");
+
+particle.className="particle";
+particle.textContent=
+emojis[Math.floor(Math.random()*emojis.length)];
+
+particle.style.left=Math.random()*100+"vw";
+particle.style.fontSize=
+18+Math.random()*25+"px";
+
+particle.style.animationDuration=
+2.5+Math.random()*3+"s";
+
+particle.style.animationDelay=
+Math.random()*.8+"s";
+
+document.body.appendChild(particle);
+
+setTimeout(()=>{
+particle.remove();
+},6000);
+}
+}
+
+window.addEventListener("load",()=>{
+setTimeout(()=>{
+accepted();
+},2500);
+});
+</script>
+</body>
+</html>
