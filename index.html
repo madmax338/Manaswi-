@@ -3,138 +3,1136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Friendship 🤍</title>
+<title>Friendship 🩷</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:radial-gradient(circle at 20% 20%,#fff0f7,transparent 30%),radial-gradient(circle at 80% 80%,#ffd1e4,transparent 30%),linear-gradient(135deg,#ffb6d5,#ffdbea,#ffc4dd);display:flex;justify-content:center;align-items:center;overflow:hidden}
-#main{width:90%;max-width:500px;text-align:center;animation:appear 1s ease}
-#main h1{color:#a91458;font-size:32px;margin-bottom:35px;text-shadow:0 3px 10px rgba(160,30,90,.15)}
-.buttons{position:relative;height:120px}
-button{border:none;border-radius:30px;padding:15px 32px;font-size:17px;font-weight:bold;cursor:pointer;transition:transform .2s ease}
-#yes{background:#ff4f98;color:white;box-shadow:0 8px 20px rgba(200,40,100,.3);margin-right:15px}
-#yes:hover{transform:scale(1.08)}
-#no{background:white;color:#b51b61;position:absolute;left:55%;box-shadow:0 6px 18px rgba(150,40,90,.2)}
-#card{display:none;width:92%;max-width:470px;opacity:0;transform:scale(.5);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.17,.67,.3,1.3)}
-.license{position:relative;background:rgba(255,255,255,.91);padding:32px 28px;border-radius:30px;border:2px solid rgba(255,105,160,.35);box-shadow:0 20px 60px rgba(150,40,90,.25),inset 0 0 30px rgba(255,180,210,.25);backdrop-filter:blur(12px);text-align:center}
-.license:before{content:"✨";position:absolute;top:15px;left:20px;font-size:22px}
-.license:after{content:"✨";position:absolute;top:15px;right:20px;font-size:22px}
-.title{color:#bd155d;font-size:26px;margin-bottom:12px;letter-spacing:1px}
-.names{font-size:21px;font-weight:bold;color:#8e2453;margin-bottom:20px}
-.divider{height:2px;background:linear-gradient(90deg,transparent,#ff77ae,transparent);margin:15px 0 22px}
-.info{text-align:left;background:#fff4f8;border-radius:18px;padding:15px 18px;line-height:1.9;color:#633047;font-size:15px}
-.info span{font-weight:bold;color:#b51b61}
-.she{color:#b51b61;font-size:19px;font-weight:bold;margin-top:25px;margin-bottom:10px}
-.qualities{text-align:left;width:190px;margin:auto;line-height:2;color:#633047;font-size:16px}
-.qualities div{opacity:0;transform:translateX(-20px);animation:qualityIn .5s ease forwards}
+*{box-sizing:border-box;}
+
+body{
+margin:0;
+min-height:100vh;
+font-family:Arial,sans-serif;
+background:
+radial-gradient(circle at 15% 15%,#fff5fa 0%,transparent 25%),
+radial-gradient(circle at 85% 20%,#ffd0e4 0%,transparent 27%),
+radial-gradient(circle at 20% 85%,#ffddea 0%,transparent 28%),
+radial-gradient(circle at 90% 85%,#ffc4dd 0%,transparent 30%),
+linear-gradient(135deg,#ffb6d5,#ffdbea,#ffc4dd);
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+/* BACKGROUND DECOR */
+
+.decor{
+position:fixed;
+pointer-events:none;
+z-index:0;
+user-select:none;
+}
+
+.flower{
+position:absolute;
+font-size:28px;
+animation:floatFlower linear infinite;
+opacity:.75;
+}
+
+.f1{left:7%;top:12%;animation-duration:7s}
+.f2{right:8%;top:18%;font-size:24px;animation-duration:8s;animation-delay:1s}
+.f3{left:12%;bottom:15%;font-size:25px;animation-duration:9s;animation-delay:2s}
+.f4{right:12%;bottom:12%;font-size:30px;animation-duration:7s;animation-delay:.5s}
+.f5{left:25%;top:7%;font-size:17px;animation-duration:6s;animation-delay:1.5s}
+.f6{right:25%;bottom:7%;font-size:18px;animation-duration:8s;animation-delay:2s}
+
+@keyframes floatFlower{
+0%,100%{transform:translateY(0) rotate(-5deg)}
+50%{transform:translateY(-18px) rotate(8deg)}
+}
+
+.heart{
+position:fixed;
+font-size:18px;
+opacity:.45;
+pointer-events:none;
+animation:heartFloat linear infinite;
+}
+
+.h1{left:20%;bottom:-30px;animation-duration:8s}
+.h2{left:75%;bottom:-30px;animation-duration:10s;animation-delay:2s}
+.h3{left:45%;bottom:-30px;animation-duration:9s;animation-delay:4s}
+
+@keyframes heartFloat{
+0%{transform:translateY(0) scale(.7);opacity:0}
+20%{opacity:.5}
+80%{opacity:.4}
+100%{transform:translateY(-110vh) scale(1.1);opacity:0}
+}
+
+.sparkle{
+position:fixed;
+pointer-events:none;
+color:white;
+font-size:15px;
+animation:sparkle 2.5s ease-in-out infinite;
+}
+
+.s1{left:17%;top:30%}
+.s2{right:18%;top:35%;animation-delay:.8s}
+.s3{left:30%;bottom:25%;animation-delay:1.4s}
+.s4{right:30%;bottom:30%;animation-delay:2s}
+
+@keyframes sparkle{
+0%,100%{opacity:.25;transform:scale(.7)}
+50%{opacity:1;transform:scale(1.25)}
+}
+
+/* ENTRY */
+
+#entry{
+position:relative;
+z-index:10;
+width:90%;
+max-width:500px;
+text-align:center;
+animation:entryAppear 1.2s ease;
+}
+
+.entryDecor{
+font-size:32px;
+margin-bottom:18px;
+animation:softPulse 2.5s ease-in-out infinite;
+}
+
+#nameInput{
+width:90%;
+max-width:350px;
+height:62px;
+padding:15px 20px;
+border:2px solid rgba(255,255,255,.85);
+border-radius:22px;
+outline:none;
+font-size:17px;
+text-align:center;
+color:#8e2453;
+background:rgba(255,255,255,.76);
+backdrop-filter:blur(16px);
+box-shadow:
+0 18px 35px rgba(150,40,90,.20),
+0 6px 0 rgba(255,255,255,.75),
+inset 0 4px 12px rgba(180,40,100,.07);
+transition:.35s ease;
+}
+
+#nameInput:focus{
+transform:translateY(-4px) scale(1.02);
+border-color:#ff91ba;
+box-shadow:
+0 22px 40px rgba(150,40,90,.25),
+0 6px 0 rgba(255,255,255,.85),
+0 0 20px rgba(255,105,160,.2),
+inset 0 4px 12px rgba(180,40,100,.07);
+}
+
+#nameInput::placeholder{
+color:#b97895;
+}
+
+#continueBtn{
+margin-top:20px;
+border:none;
+border-radius:22px;
+padding:14px 36px;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+background:linear-gradient(145deg,#ff72ad,#ff3f91);
+color:white;
+box-shadow:
+0 12px 25px rgba(200,40,100,.3),
+0 5px 0 #d92d75;
+transition:.25s ease;
+}
+
+#continueBtn:hover{
+transform:translateY(-4px) scale(1.04);
+}
+
+#continueBtn:active{
+transform:translateY(2px);
+}
+
+/* QUESTION */
+
+#question{
+display:none;
+position:relative;
+z-index:10;
+width:90%;
+max-width:500px;
+text-align:center;
+animation:appear 1s ease;
+}
+
+/* BIG CUTE BEAR */
+
+.bearBox{
+height:185px;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+animation:bearPop .9s cubic-bezier(.17,.67,.3,1.4);
+}
+
+.bear{
+position:relative;
+width:145px;
+height:145px;
+animation:bearBounce 2.2s ease-in-out infinite;
+filter:drop-shadow(0 15px 18px rgba(120,50,70,.22));
+}
+
+/* EARS */
+
+.ear{
+position:absolute;
+width:48px;
+height:48px;
+border-radius:50%;
+background:#b9785c;
+top:3px;
+z-index:1;
+}
+
+.ear:after{
+content:"";
+position:absolute;
+width:25px;
+height:25px;
+border-radius:50%;
+background:#f3c1b1;
+left:11px;
+top:11px;
+}
+
+.ear.left{
+left:12px;
+}
+
+.ear.right{
+right:12px;
+}
+
+/* HEAD */
+
+.face{
+position:absolute;
+width:120px;
+height:115px;
+left:12px;
+top:20px;
+border-radius:48% 48% 45% 45%;
+background:linear-gradient(145deg,#c98b6d,#a9664f);
+z-index:2;
+box-shadow:
+inset -8px -10px 15px rgba(100,45,30,.12),
+inset 8px 8px 12px rgba(255,255,255,.16);
+}
+
+/* MUZZLE */
+
+.muzzle{
+position:absolute;
+width:72px;
+height:53px;
+background:#f3d0b9;
+border-radius:50%;
+left:24px;
+top:52px;
+}
+
+.nose{
+position:absolute;
+width:18px;
+height:13px;
+background:#543128;
+border-radius:50%;
+left:27px;
+top:10px;
+}
+
+.mouth{
+position:absolute;
+width:18px;
+height:10px;
+border-bottom:3px solid #543128;
+border-radius:0 0 50% 50%;
+left:27px;
+top:21px;
+}
+
+/* EYES */
+
+.eye{
+position:absolute;
+width:12px;
+height:15px;
+background:#33201c;
+border-radius:50%;
+top:42px;
+z-index:3;
+}
+
+.eye.left{
+left:27px;
+}
+
+.eye.right{
+right:27px;
+}
+
+.eye:after{
+content:"";
+position:absolute;
+width:4px;
+height:4px;
+background:white;
+border-radius:50%;
+top:3px;
+left:3px;
+}
+
+/* CHEEKS */
+
+.cheek{
+position:absolute;
+width:18px;
+height:10px;
+border-radius:50%;
+background:#ef9fae;
+opacity:.75;
+top:68px;
+z-index:4;
+}
+
+.cheek.left{
+left:10px;
+}
+
+.cheek.right{
+right:10px;
+}
+
+/* LITTLE HEARTS AROUND BEAR */
+
+.bearHeart{
+position:absolute;
+font-size:22px;
+animation:miniHeart 1.8s ease-in-out infinite;
+}
+
+.bh1{
+left:5%;
+top:35%;
+animation-delay:.2s;
+}
+
+.bh2{
+right:5%;
+top:30%;
+animation-delay:.8s;
+}
+
+.bh3{
+left:18%;
+bottom:10%;
+font-size:17px;
+animation-delay:1.2s;
+}
+
+.bh4{
+right:18%;
+bottom:12%;
+font-size:17px;
+animation-delay:.5s;
+}
+
+@keyframes bearPop{
+0%{
+opacity:0;
+transform:scale(.2) translateY(80px);
+}
+70%{
+transform:scale(1.12) translateY(-8px);
+}
+100%{
+opacity:1;
+transform:scale(1) translateY(0);
+}
+}
+
+@keyframes bearBounce{
+0%,100%{
+transform:translateY(0) rotate(0deg);
+}
+25%{
+transform:translateY(-8px) rotate(-2deg);
+}
+50%{
+transform:translateY(0) rotate(0deg);
+}
+75%{
+transform:translateY(-5px) rotate(2deg);
+}
+}
+
+@keyframes miniHeart{
+0%,100%{
+transform:translateY(0) scale(.8);
+opacity:.5;
+}
+50%{
+transform:translateY(-10px) scale(1.15);
+opacity:1;
+}
+}
+
+#question h1{
+color:#a91458;
+font-size:30px;
+margin:0 0 35px;
+text-shadow:0 3px 10px rgba(160,30,90,.15);
+}
+
+/* BUTTONS */
+
+.buttons{
+position:relative;
+height:120px;
+}
+
+button{
+border:none;
+border-radius:30px;
+padding:15px 32px;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+transition:transform .2s ease;
+}
+
+#yes{
+background:#ff4f98;
+color:white;
+box-shadow:0 8px 20px rgba(200,40,100,.3);
+margin-right:15px;
+}
+
+#yes:hover{
+transform:scale(1.08);
+}
+
+#no{
+background:white;
+color:#b51b61;
+position:absolute;
+left:55%;
+box-shadow:0 6px 18px rgba(150,40,90,.2);
+}
+
+/* CARD */
+
+#card{
+display:none;
+position:relative;
+z-index:10;
+width:92%;
+max-width:470px;
+opacity:0;
+transform:scale(.5);
+transition:
+opacity 1.2s ease,
+transform 1.2s cubic-bezier(.17,.67,.3,1.3);
+}
+
+.license{
+position:relative;
+background:rgba(255,255,255,.91);
+padding:32px 28px;
+border-radius:30px;
+border:2px solid rgba(255,105,160,.35);
+box-shadow:
+0 20px 60px rgba(150,40,90,.25),
+inset 0 0 30px rgba(255,180,210,.25);
+backdrop-filter:blur(12px);
+text-align:center;
+}
+
+.license:before{
+content:"✨";
+position:absolute;
+top:15px;
+left:20px;
+font-size:22px;
+}
+
+.license:after{
+content:"✨";
+position:absolute;
+top:15px;
+right:20px;
+font-size:22px;
+}
+
+.title{
+color:#bd155d;
+font-size:26px;
+margin-bottom:12px;
+letter-spacing:1px;
+}
+
+.names{
+font-size:21px;
+font-weight:bold;
+color:#8e2453;
+margin-bottom:20px;
+}
+
+.divider{
+height:2px;
+background:linear-gradient(
+90deg,
+transparent,
+#ff77ae,
+transparent
+);
+margin:15px 0 22px;
+}
+
+.info{
+text-align:left;
+background:#fff4f8;
+border-radius:18px;
+padding:15px 18px;
+line-height:1.9;
+color:#633047;
+font-size:15px;
+}
+
+.info span{
+font-weight:bold;
+color:#b51b61;
+}
+
+.she{
+color:#b51b61;
+font-size:19px;
+font-weight:bold;
+margin-top:25px;
+margin-bottom:10px;
+}
+
+.qualities{
+text-align:left;
+width:210px;
+margin:auto;
+line-height:2;
+color:#633047;
+font-size:16px;
+}
+
+.qualities div{
+opacity:0;
+transform:translateX(-20px);
+animation:qualityIn .5s ease forwards;
+}
+
 .qualities div:nth-child(1){animation-delay:.2s}
 .qualities div:nth-child(2){animation-delay:.4s}
 .qualities div:nth-child(3){animation-delay:.6s}
 .qualities div:nth-child(4){animation-delay:.8s}
 .qualities div:nth-child(5){animation-delay:1s}
 .qualities div:nth-child(6){animation-delay:1.2s}
-.message{margin-top:22px;padding:15px;background:#fff0f6;border-radius:18px;color:#633047;font-size:15px;line-height:1.6;font-style:italic;border:1px solid #ffd0e2}
-.bottom{margin-top:20px;font-size:20px;letter-spacing:4px}
-.particle{position:fixed;top:-50px;pointer-events:none;z-index:9999;animation:fall linear forwards}
+
+.message{
+margin-top:22px;
+padding:15px;
+background:#fff0f6;
+border-radius:18px;
+color:#633047;
+font-size:15px;
+line-height:1.6;
+font-style:italic;
+border:1px solid #ffd0e2;
+}
+
+.bottom{
+margin-top:20px;
+font-size:20px;
+letter-spacing:4px;
+}
+
+/* PARTICLES */
+
+.particle{
+position:fixed;
+top:-50px;
+pointer-events:none;
+z-index:9999;
+animation:fall linear forwards;
+}
+
 @keyframes fall{
-0%{transform:translateY(-50px) rotate(0deg) scale(.5);opacity:1}
-50%{opacity:1}
-100%{transform:translateY(110vh) rotate(720deg) scale(1.2);opacity:0}
+0%{
+transform:translateY(-50px) rotate(0deg) scale(.5);
+opacity:1;
 }
+50%{
+opacity:1;
+}
+100%{
+transform:translateY(110vh) rotate(720deg) scale(1.2);
+opacity:0;
+}
+}
+
 @keyframes appear{
-from{opacity:0;transform:scale(.8)}
-to{opacity:1;transform:scale(1)}
+from{
+opacity:0;
+transform:scale(.8);
 }
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
 @keyframes qualityIn{
-to{opacity:1;transform:translateX(0)}
+to{
+opacity:1;
+transform:translateX(0);
 }
+}
+
+@keyframes entryAppear{
+from{
+opacity:0;
+transform:scale(.8) translateY(20px);
+}
+to{
+opacity:1;
+transform:scale(1) translateY(0);
+}
+}
+
+@keyframes softPulse{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.08)}
+}
+
+#denied{
+position:fixed;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:100;
+background:
+radial-gradient(
+circle,
+rgba(255,255,255,.25),
+transparent 60%
+);
+}
+
+/* MOBILE */
+
 @media(max-width:500px){
-#main h1{font-size:27px}
-.license{padding:28px 20px}
-.title{font-size:23px}
-.names{font-size:19px}
-.info{font-size:14px}
+
+#question h1{
+font-size:27px;
+}
+
+.bearBox{
+height:170px;
+}
+
+.bear{
+transform:scale(.9);
+}
+
+.license{
+padding:28px 20px;
+}
+
+.title{
+font-size:23px;
+}
+
+.names{
+font-size:19px;
+}
+
+.info{
+font-size:14px;
+}
+
+.flower{
+font-size:22px;
+}
+
 }
 </style>
 </head>
+
 <body>
-<div id="main">
-<h1>Do you like my friendship? 🩷</h1>
+
+<!-- BACKGROUND -->
+
+<div class="decor flower f1">🌸</div>
+<div class="decor flower f2">🌷</div>
+<div class="decor flower f3">🌺</div>
+<div class="decor flower f4">🌸</div>
+<div class="decor flower f5">🌼</div>
+<div class="decor flower f6">🌷</div>
+
+<div class="heart h1">🩷</div>
+<div class="heart h2">💕</div>
+<div class="heart h3">💗</div>
+
+<div class="sparkle s1">✦</div>
+<div class="sparkle s2">✧</div>
+<div class="sparkle s3">✦</div>
+<div class="sparkle s4">✧</div>
+
+
+<!-- ENTRY -->
+
+<div id="entry">
+
+<div class="entryDecor">
+🌸 🩷 ✨ 🌷
+</div>
+
+<input
+id="nameInput"
+type="text"
+placeholder="Enter name..."
+autocomplete="off"
+>
+
+<br>
+
+<button id="continueBtn" onclick="checkName()">
+Continue 🩷
+</button>
+
+</div>
+
+
+<!-- QUESTION -->
+
+<div id="question">
+
+<!-- BIG CUTE BEAR -->
+
+<div class="bearBox">
+
+<div class="bearHeart bh1">🩷</div>
+<div class="bearHeart bh2">💕</div>
+<div class="bearHeart bh3">✨</div>
+<div class="bearHeart bh4">🌸</div>
+
+<div class="bear">
+
+<div class="ear left"></div>
+<div class="ear right"></div>
+
+<div class="face">
+
+<div class="eye left"></div>
+<div class="eye right"></div>
+
+<div class="cheek left"></div>
+<div class="cheek right"></div>
+
+<div class="muzzle">
+<div class="nose"></div>
+<div class="mouth"></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<h1>
+Do you like my friendship? 🩷
+</h1>
+
 <div class="buttons">
-<button id="yes" onclick="accepted()">YES 🩷</button>
-<button id="no">NO 😭</button>
+
+<button id="yes" onclick="accepted()">
+YES 🩷
+</button>
+
+<button id="no">
+NO 😭
+</button>
+
 </div>
+
 </div>
+
+
+<!-- FRIENDSHIP CARD -->
 
 <div id="card">
+
 <div class="license">
-<div class="title">🩷 FRIENDSHIP LICENSE 🩷</div>
-<div class="names">🌸 Manaswi × Varad 🤍</div>
+
+<div class="title">
+🩷 FRIENDSHIP LICENSE 🩷
+</div>
+
+<div class="names" id="friendName"></div>
+
 <div class="divider"></div>
+
 <div class="info">
-<div>🏷️ <span>Status:</span> Permanently Approved ♾️</div>
-<div>💯 <span>Friendship Level:</span> 100%</div>
-<div>🗓️ <span>Validity:</span> Forever ♾️</div>
+
+<div>
+🏷️ <span>Status:</span>
+Permanently Approved ♾️
 </div>
-<div class="she">🌷 She is... 🌷</div>
-<div class="qualities">
-<div>🌿 • Calm</div>
-<div>✨ • Charming</div>
-<div>🌸 • Beautiful</div>
-<div>🫶 • Kind</div>
-<div>💫 • Attractive</div>
-<div>🌼 • Genuine</div>
+
+<div>
+💯 <span>Friendship Level:</span>
+100%
 </div>
+
+<div>
+🗓️ <span>Validity:</span>
+Forever ♾️
+</div>
+
+</div>
+
+<div class="she">
+🌷 She is... 🌷
+</div>
+
+<div class="qualities" id="qualities"></div>
+
 <div class="divider"></div>
-<div class="message">💬 “Honestly, having a friend like you is a pretty nice thing to have.” 🩷</div>
-<div class="bottom">🫶 ✨ 🩷 🤍 🌸 💫 🎀</div>
+
+<div class="message" id="message"></div>
+
+<div class="bottom">
+🫶 ✨ 🩷 🤍 🌸 💫 🎀
 </div>
+
 </div>
+
+</div>
+
 
 <script>
-const noButton=document.getElementById("no");
 
-function moveNo(){
-const x=Math.random()*(window.innerWidth-noButton.offsetWidth-20);
-const y=Math.random()*(window.innerHeight-noButton.offsetHeight-20);
-noButton.style.position="fixed";
-noButton.style.left=Math.max(x,20)+"px";
-noButton.style.top=Math.max(y,20)+"px";
+const friends = {
+
+disha:{
+name:"🌸 Disha × Varad 🤍",
+
+qualities:[
+"🌸 • Beautiful",
+"✨ • Charming",
+"🥰 • Adorable",
+"💫 • Irresistible",
+"🫶 • Sweet",
+"💕 • Special"
+],
+
+message:
+"💬 “🌍 In a world of 7 continents, 🌎 195 countries, and 👥✨ over 8 billion people, somehow I got lucky enough to find you… 🥹💫 and even luckier to call you my friend. 🩷🌸🫶💕”"
+},
+
+arya:{
+name:"🌸 Arya (Aries) × Varad 🤍",
+
+qualities:[
+"🌿 • Calm",
+"✨ • Charming",
+"🌸 • Beautiful",
+"🫶 • Kind",
+"💫 • Genuine",
+"🌼 • Amazing"
+],
+
+message:
+"💬 “Honestly, having a friend like you is a pretty nice thing to have.” 🩷"
 }
 
-noButton.addEventListener("mouseenter",moveNo);
-noButton.addEventListener("touchstart",e=>{
+};
+
+let currentFriend="";
+
+
+/* CHECK NAME */
+
+function checkName(){
+
+const input=
+document
+.getElementById("nameInput")
+.value
+.trim()
+.toLowerCase();
+
+if(!friends[input]){
+
+document.getElementById("entry").style.display="none";
+
+const denied=document.createElement("div");
+
+denied.id="denied";
+
+denied.innerHTML=`
+
+<div
+style="
+text-align:center;
+color:#a91458;
+animation:appear .7s ease;
+padding:20px;
+">
+
+<div
+style="
+font-size:32px;
+font-weight:bold;
+">
+We are not friends 😭
+</div>
+
+<div
+style="
+font-size:18px;
+margin-top:12px;
+">
+Nice try though 😂
+</div>
+
+</div>
+`;
+
+document.body.appendChild(denied);
+
+setTimeout(()=>{
+
+denied.remove();
+
+document.getElementById("nameInput").value="";
+
+document.getElementById("entry").style.display="block";
+
+},2500);
+
+return;
+}
+
+currentFriend=input;
+
+document.getElementById("entry").style.display="none";
+
+document.getElementById("question").style.display="block";
+
+}
+
+
+/* NO BUTTON */
+
+const noButton=
+document.getElementById("no");
+
+
+function moveNo(){
+
+const x=
+Math.random()*
+(window.innerWidth-noButton.offsetWidth-20);
+
+const y=
+Math.random()*
+(window.innerHeight-noButton.offsetHeight-20);
+
+noButton.style.position="fixed";
+
+noButton.style.left=
+Math.max(x,20)+"px";
+
+noButton.style.top=
+Math.max(y,20)+"px";
+}
+
+
+/* DESKTOP */
+
+noButton.addEventListener(
+"mouseenter",
+moveNo
+);
+
+
+/* MOBILE */
+
+noButton.addEventListener(
+"touchstart",
+e=>{
 e.preventDefault();
 moveNo();
-});
-noButton.addEventListener("focus",moveNo);
+}
+);
+
+
+/* MOUSE / KEYBOARD FOCUS */
+
+noButton.addEventListener(
+"focus",
+moveNo
+);
+
+
+/* KEYBOARD */
+
+noButton.addEventListener(
+"keydown",
+e=>{
+
+if(
+e.key==="Enter" ||
+e.key===" " ||
+e.key==="ArrowUp" ||
+e.key==="ArrowDown" ||
+e.key==="ArrowLeft" ||
+e.key==="ArrowRight"
+){
+
+e.preventDefault();
+
+moveNo();
+
+}
+
+}
+);
+
+
+/* YES */
 
 function accepted(){
-document.getElementById("main").style.display="none";
-const card=document.getElementById("card");
+
+document.getElementById("question").style.display="none";
+
+const friend=
+friends[currentFriend];
+
+
+/* NAME */
+
+document.getElementById("friendName")
+.textContent=friend.name;
+
+
+/* MESSAGE */
+
+document.getElementById("message")
+.textContent=friend.message;
+
+
+/* QUALITIES */
+
+const qualityBox=
+document.getElementById("qualities");
+
+qualityBox.innerHTML="";
+
+friend.qualities.forEach(q=>{
+
+const div=
+document.createElement("div");
+
+div.textContent=q;
+
+qualityBox.appendChild(div);
+
+});
+
+
+/* SHOW CARD */
+
+const card=
+document.getElementById("card");
+
 card.style.display="block";
 
 setTimeout(()=>{
+
 card.style.opacity="1";
+
 card.style.transform="scale(1)";
+
 },100);
 
+
+/* EMOJI BLAST */
+
 emojiBlast();
+
 }
 
+
+/* EMOJI BLAST */
+
 function emojiBlast(){
+
 const emojis=[
-"🩷","🤍","💗","💕","✨","🌸",
-"🫶","🎀","💫","🌷","💖","⭐"
+"🩷",
+"🤍",
+"💗",
+"💕",
+"✨",
+"🌸",
+"🫶",
+"🎀",
+"💫",
+"🌷",
+"💖",
+"⭐"
 ];
 
 for(let i=0;i<100;i++){
-const particle=document.createElement("div");
+
+const particle=
+document.createElement("div");
 
 particle.className="particle";
-particle.textContent=
-emojis[Math.floor(Math.random()*emojis.length)];
 
-particle.style.left=Math.random()*100+"vw";
+particle.textContent=
+emojis[
+Math.floor(
+Math.random()*emojis.length
+)
+];
+
+particle.style.left=
+Math.random()*100+"vw";
+
 particle.style.fontSize=
 18+Math.random()*25+"px";
 
@@ -147,16 +1145,34 @@ Math.random()*.8+"s";
 document.body.appendChild(particle);
 
 setTimeout(()=>{
+
 particle.remove();
+
 },6000);
-}
+
 }
 
-window.addEventListener("load",()=>{
-setTimeout(()=>{
-accepted();
-},2500);
-});
+}
+
+
+/* ENTER TO CONTINUE */
+
+document
+.getElementById("nameInput")
+.addEventListener(
+"keydown",
+e=>{
+
+if(e.key==="Enter"){
+
+checkName();
+
+}
+
+}
+);
+
 </script>
+
 </body>
 </html>
